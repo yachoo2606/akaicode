@@ -40,12 +40,9 @@ class DBModel:
         country = sqla.Column(sqla.String)
         state = sqla.Column(sqla.String)
         city = sqla.Column(sqla.String)
-<<<<<<< HEAD
         address = sqla.Column(sqla.String)
-=======
         street = sqla.Column(sqla.String)
         number = sqla.Column(sqla.String)
->>>>>>> origin/main
         postcode = sqla.Column(sqla.String)
         latitude = sqla.Column(sqla.String)
         longitude = sqla.Column(sqla.String)
@@ -54,6 +51,10 @@ class DBModel:
         NIP = sqla.Column(sqla.String)
         REGON = sqla.Column(sqla.String)
         website = sqla.Column(sqla.String)
+        login = sqla.Column(sqla.String, unique=True)
+        password = sqla.Column(sqla.String)
+        email = sqla.Column(sqla.String, unique=True)
+        phoneNumber = sqla.Column(sqla.String, unique=True, nullable=True)
 
     class Requests(base):
         __tablename__ = 'Requests'
