@@ -137,7 +137,7 @@ def editRequest():
     toEditRequest.endDate = request.args.get("endDate")
 
     session.query(DBModel.Requests).filter(
-        DBModel.Requests.name == request.args.get('email'),
+        DBModel.Requests.name == request.args.get('name'),
         DBModel.Requests.description == request.args.get('password')
     ).update(toEditRequest)
 
@@ -166,6 +166,31 @@ def addEvent():
     session.commit()
     app.logger.info(f"added Event: {toAddEvent.name}")
     return toAddEvent.toDict()
+
+
+@app.route("/editEvent", methods={'POST'})
+def editEvent():
+    toEditEvent = DBModel.Events()
+
+    toEditEvent.name = request.args.get("name")
+    toEditEvent.description = request.args.get("description")
+    toEditEvent.country = request.args.get("country")
+    toEditEvent.state = request.args.get("state")
+    toEditEvent.city = request.args.get("city")
+    toEditEvent.street = request.args.get("street")
+    toEditEvent.number = request.args.get("number")
+    toEditEvent.postcode = request.args.get("postcode")
+    toEditEvent.latitude = request.args.get("latitude")
+    toEditEvent.longitude = request.args.get("longitude")
+    toEditEvent.type = request.args.get("type")
+    toEditEvent.start_date = request.args.get("start_date")
+    toEditEvent.end_date = request.args.get("end_date")
+
+    session.query(DBModel.Events).filter(
+        DBModel.Requests.name == request.args.get('name'),
+    ).update(toEditEvent)
+
+    return toEditEvent.toDict()
 
 
 @app.route("/test", methods={'POST'})
