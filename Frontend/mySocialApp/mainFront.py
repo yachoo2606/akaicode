@@ -8,7 +8,6 @@ environments = dotenv_values("../.env")
 def main(page: Page):
     new_task = TextField(hint_text="Whats needs to be done?", expand=True)
     logo = Image(src=f"/logo.png", width=60, height=60)
-    temp = Image(src=f"/logo.png", width=10, height=10)
     navBar = Container(
         Column(
             controls=[
@@ -16,7 +15,7 @@ def main(page: Page):
                     controls=[
                         logo,
                         Text(environments.get("APPNAME"), size=20),
-                        ElevatedButton(text="Szukaj", color = "white", bgcolor = "TRANSPARENT", icon=temp),
+                        ElevatedButton(text="Szukaj", color = "white", bgcolor = "TRANSPARENT"),
                         ElevatedButton(text="Organizacje", color = "white", bgcolor = "TRANSPARENT"),
                         ElevatedButton(text="Zbiórki", color = "white", bgcolor = "TRANSPARENT"),
                         ElevatedButton(text="Zaloguj się", bgcolor = "green", color = "white"),
