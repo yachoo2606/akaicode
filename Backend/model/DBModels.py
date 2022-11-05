@@ -14,18 +14,15 @@ class DBModel:
         __tablename__ = 'Users'
 
         id = sqla.Column(sqla.Integer, primary_key=True)
-        login = sqla.Column(sqla.String, unique=True)
+        login = sqla.Column(sqla.String)
         password = sqla.Column(sqla.String)
         name = sqla.Column(sqla.String)
         surname = sqla.Column(sqla.String)
-        email = sqla.Column(sqla.String, unique=True)
-        phoneNumber = sqla.Column(sqla.String, unique=True, nullable=True)
-        organizationId = sqla.Column(sqla.Integer, sqla.ForeignKey('Organization.id'), nullable=True)
+        email = sqla.Column(sqla.String)
+        phoneNumber = sqla.Column(sqla.String)
+        organizationId = sqla.Column(sqla.Integer, sqla.ForeignKey('Organization.id'))
         validated = sqla.Column(sqla.Boolean, default=False)
         created_date = sqla.Column(sqla.Date)
-
-        def __repr__(self):
-            return f"<User(id={self.id}, name={self.name}, login={self.login}, phoneNumber={self.phoneNumber}, role={self.role}, created_date={self.created_date})> "
 
         def toDict(self):
             return dict(id=self.id, name=self.name, login=self.login, phoneNumber=self.phoneNumber,
@@ -47,21 +44,19 @@ class DBModel:
         latitude = sqla.Column(sqla.String)
         longitude = sqla.Column(sqla.String)
         type = sqla.Column(sqla.String)
-        KRS = sqla.Column(sqla.String)
-        NIP = sqla.Column(sqla.String)
-        REGON = sqla.Column(sqla.String)
+        KRS = sqla.Column(sqla.String, unique=True)
+        NIP = sqla.Column(sqla.String, unique=True)
+        REGON = sqla.Column(sqla.String, unique=True)
         website = sqla.Column(sqla.String)
-        login = sqla.Column(sqla.String, unique=True)
         password = sqla.Column(sqla.String)
         email = sqla.Column(sqla.String, unique=True)
-        phoneNumber = sqla.Column(sqla.String, unique=True, nullable=True)
+        phoneNumber = sqla.Column(sqla.String, unique=True)
 
         def toDict(self):
             return dict(id=self.id, name=self.name, description=self.description, country=self.country,
                         state=self.state, city=self.city, address=self.address, street=self.street, number=self.number,
-                        postcode=self.postcode, latitude=self.latitude, longitude=longitude, type=self.type,
-                        KRS=self.KRS,
-                        NIP=self.NIP, REGON=self.REGON, website=self.website, login=self.login, password=self.password,
+                        postcode=self.postcode, latitude=self.latitude, longitude=self.longitude, type=self.type,
+                        KRS=self.KRS, NIP=self.NIP, REGON=self.REGON, website=self.website, password=self.password,
                         email=self.email, phoneNumber=self.phoneNumber)
 
     class Requests(base):
@@ -97,6 +92,7 @@ class DBModel:
 
         def toDict(self):
             return dict(id=self.id, name=self.name, description=self.description, country=self.country,
-                        state=self.state,city=self.city, street=self.street, number=self.number, postcode=self.postcode,
-                        latitude=self.latitude,longitude=self.longitude, type=self.type, start_date=self.start_date,
+                        state=self.state, city=self.city, street=self.street, number=self.number,
+                        postcode=self.postcode,
+                        latitude=self.latitude, longitude=self.longitude, type=self.type, start_date=self.start_date,
                         end_date=self.end_date)
