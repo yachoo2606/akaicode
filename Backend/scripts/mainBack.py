@@ -129,7 +129,7 @@ def addRequest():
 
 
 @app.route("/editRequest", methods={'POST'})
-def addRequest():
+def editRequest():
     toEditRequest = DBModel.Requests()
     toEditRequest.name = request.args.get("name")
     toEditRequest.description = request.args.get("description")
