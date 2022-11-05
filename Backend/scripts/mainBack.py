@@ -3,7 +3,7 @@ import sqlalchemy.orm as sqlaOrm
 from flask import Flask,request,jsonify, send_file
 import logging
 from logging.handlers import RotatingFileHandler
-from Backend.model.DBModels import base, engine
+from Backend.model.DBModels import base, engine, DBModel
 from dotenv import dotenv_values
 
 
@@ -33,6 +33,12 @@ rootLogger.addHandler(fileHandled)
 
 Session = sqlaOrm.sessionmaker(engine)
 session = Session()
+
+@app.route('/getAllOrganizations')
+def getAllUsers():
+    users = session.query(DBModel.Organization).all()
+    app.logger.info('Read all Organizations')
+    return jsonify([u.toDict() for u in users])
 
 
 if __name__ == '__main__':

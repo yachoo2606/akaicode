@@ -56,6 +56,14 @@ class DBModel:
         email = sqla.Column(sqla.String, unique=True)
         phoneNumber = sqla.Column(sqla.String, unique=True, nullable=True)
 
+        def toDict(self):
+            return dict(id=self.id, name=self.name, description=self.description, country=self.country,
+                        state=self.state, city=self.city, address=self.address, street=self.street, number=self.number,
+                        postcode=self.postcode, latitude=self.latitude, longitude=longitude, type=self.type,
+                        KRS=self.KRS,
+                        NIP=self.NIP, REGON=self.REGON, website=self.website, login=self.login, password=self.password,
+                        email=self.email, phoneNumber=self.phoneNumber)
+
     class Requests(base):
         __tablename__ = 'Requests'
 
@@ -64,6 +72,10 @@ class DBModel:
         description = sqla.Column(sqla.String)
         addedDate = sqla.Column(sqla.Date)
         endDate = sqla.Column(sqla.Date)
+
+        def toDict(self):
+            return dict(id=self.id, name=self.name, description=self.description, addedDate=self.addedDate,
+                        endDate=self.endDate)
 
     class Events(base):
         __tablename__ = 'Events'
@@ -83,3 +95,8 @@ class DBModel:
         start_date = sqla.Column(sqla.DateTime)
         end_date = sqla.Column(sqla.DateTime)
 
+        def toDict(self):
+            return dict(id=self.id, name=self.name, description=self.description, country=self.country,
+                        state=self.state,city=self.city, street=self.street, number=self.number, postcode=self.postcode,
+                        latitude=self.latitude,longitude=self.longitude, type=self.type, start_date=self.start_date,
+                        end_date=self.end_date)
