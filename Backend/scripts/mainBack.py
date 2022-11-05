@@ -73,7 +73,7 @@ def register():
     return jsonify(toAddOrganization.toDict())
 
 
-@app.route("/editOrganization", methots={'POST'})
+@app.route("/editOrganization", methods={'POST'})
 def editOrganization():
     toEditOrganization = DBModel.Organization()
     toEditOrganization.name = request.args.get("name")
