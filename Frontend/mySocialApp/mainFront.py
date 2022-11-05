@@ -1,7 +1,8 @@
 from math import pi
 
 import flet
-from flet import Page, Text, TextField, Column, Row, Image, Container, alignment, ElevatedButton, VerticalDivider
+from flet import Page, Text, TextField, Column, Row, Image, Container, alignment, ElevatedButton, VerticalDivider, \
+    GridView, Icon, icons
 from dotenv import dotenv_values
 from flet.transform import Rotate
 from flet.types import BoxShape
@@ -14,35 +15,100 @@ def makeNavBar(page: Page):
     navBar = Container(
         Row(
             controls=[
-                Row(
-                    controls=[
-                        Row(
-                            controls=[
-                                logo,
-                                Text(environments.get("APPNAME"), size=20)
-                            ],
-                            alignment="start"
-                        ),
-                        Row(
-                            controls=[
-                                ElevatedButton(text="Szukaj", color="white", bgcolor="TRANSPARENT"),
-                                VerticalDivider(width=1, color="white"),
-                                ElevatedButton(text="Organizacje", color="white", bgcolor="TRANSPARENT"),
-                                VerticalDivider(width=1, color="white"),
-                                ElevatedButton(text="Zbiórki", color="white", bgcolor="TRANSPARENT"),
-                                VerticalDivider(width=1, color="white"),
-                                ElevatedButton(text="Zaloguj się", bgcolor="green", color="white")
-                            ],
-                            alignment="center"
-                        )
-                    ],
-                ),
+                logo,
+                Text(environments.get("APPNAME"), size=20),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                Text(" "),
+                ElevatedButton(text="Szukaj", color="white", bgcolor="TRANSPARENT"),
+                Icon(name=icons.LOOP_SHARP),
+                VerticalDivider(width=1, color="white"),
+                ElevatedButton(text="Organizacje", color="white", bgcolor="TRANSPARENT"),
+                VerticalDivider(width=1, color="white"),
+                ElevatedButton(text="Zbiórki", color="white", bgcolor="TRANSPARENT"),
+                VerticalDivider(width=1, color="white"),
+                ElevatedButton(text="Zaloguj się", bgcolor="green", color="white")
             ],
+            alignment="spaceBetween"
         ),
-        padding=5,
-        image_src=f"/navBackground.png",
-        image_fit="fitWidth",
-        height=80,
+        margin=0,
+        image_src="resource/navBackground.png",
+        image_fit="contain",
+        height=230,
+        alignment=alignment.top_center,
     )
     page.add(navBar)
     return page
@@ -61,10 +127,11 @@ def makeFooter(page: Page):
                 ),
             ],
         ),
+        margin=0,
         padding=5,
         image_src=f"/footerBackground.png",
-        image_fit="fitWidth",
-        height=150,
+        image_fit="contain",
+        height=230,
         alignment=alignment.bottom_center,
     )
     page.add(footer)
@@ -77,6 +144,7 @@ def main(page: Page):
     page.add(Text("Hello world"))
     page = makeFooter(page)
 
+    page.margin = 0,
     page.padding = 0
     page.horizontal_alignment = "center"
 
