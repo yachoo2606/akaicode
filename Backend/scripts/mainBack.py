@@ -193,11 +193,6 @@ def editEvent():
     return toEditEvent.toDict()
 
 
-@app.route("/test", methods={'POST'})
-def test():
-    return request.args
-
-
 if __name__ == '__main__':
     base.metadata.create_all(engine)
 
