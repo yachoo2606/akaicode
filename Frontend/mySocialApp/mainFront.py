@@ -1,11 +1,7 @@
-from math import pi
-
 import flet
-from flet import Page, Text, TextField, Column, Row, Image, Container, alignment, ElevatedButton, VerticalDivider, \
-    GridView, Icon, icons
 from dotenv import dotenv_values
-from flet.transform import Rotate
-from flet.types import BoxShape
+from flet import Page, Text, TextField, Column, Row, Image, Container, alignment, ElevatedButton, VerticalDivider, \
+    Icon, icons
 
 environments = dotenv_values("../.env")
 
